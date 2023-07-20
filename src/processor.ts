@@ -26,5 +26,5 @@ export const processor = new EvmBatchProcessor()
 
   .addTransaction({
     to: [ACCOUNT_ADDRESS],
-    sighash: ["0xd9627aa4"], //sell to Uniswap sighash
+    sighash: ["0x84680615"], //0xd9627aa4 sell to Uniswap sighash    change to 0x84680615 to see batch buy
   });
