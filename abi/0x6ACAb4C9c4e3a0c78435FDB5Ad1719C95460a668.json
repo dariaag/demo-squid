@@ -1,820 +1,1162 @@
 [
   {
-    "type": "function",
-    "name": "EIP712_DOMAIN_SEPARATOR",
-    "constant": true,
-    "stateMutability": "view",
-    "payable": false,
-    "inputs": [],
-    "outputs": [
-      {
-        "type": "bytes32"
-      }
-    ]
-  },
-  {
-    "type": "function",
-    "name": "FEATURE_NAME",
-    "constant": true,
-    "stateMutability": "view",
-    "payable": false,
-    "inputs": [],
-    "outputs": [
-      {
-        "type": "string"
-      }
-    ]
-  },
-  {
-    "type": "function",
-    "name": "FEATURE_VERSION",
-    "constant": true,
-    "stateMutability": "view",
-    "payable": false,
-    "inputs": [],
-    "outputs": [
-      {
-        "type": "uint256"
-      }
-    ]
-  },
-  {
-    "type": "function",
-    "name": "_buyERC1155",
-    "constant": false,
-    "stateMutability": "payable",
-    "payable": true,
     "inputs": [
+      { "internalType": "address", "name": "zeroExAddress", "type": "address" },
       {
-        "type": "tuple",
-        "name": "sellOrder",
-        "components": [
-          {
-            "type": "uint8",
-            "name": "direction"
-          },
-          {
-            "type": "address",
-            "name": "maker"
-          },
-          {
-            "type": "address",
-            "name": "taker"
-          },
-          {
-            "type": "uint256",
-            "name": "expiry"
-          },
-          {
-            "type": "uint256",
-            "name": "nonce"
-          },
-          {
-            "type": "address",
-            "name": "erc20Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc20TokenAmount"
-          },
-          {
-            "type": "tuple[]",
-            "name": "fees"
-          },
-          {
-            "type": "address",
-            "name": "erc1155Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc1155TokenId"
-          },
-          {
-            "type": "tuple[]",
-            "name": "erc1155TokenProperties"
-          },
-          {
-            "type": "uint128",
-            "name": "erc1155TokenAmount"
-          }
-        ]
-      },
-      {
-        "type": "tuple",
-        "name": "signature",
-        "components": [
-          {
-            "type": "uint8",
-            "name": "signatureType"
-          },
-          {
-            "type": "uint8",
-            "name": "v"
-          },
-          {
-            "type": "bytes32",
-            "name": "r"
-          },
-          {
-            "type": "bytes32",
-            "name": "s"
-          }
-        ]
-      },
-      {
-        "type": "tuple",
-        "name": "params",
-        "components": [
-          {
-            "type": "uint128",
-            "name": "buyAmount"
-          },
-          {
-            "type": "uint256",
-            "name": "ethAvailable"
-          },
-          {
-            "type": "bytes",
-            "name": "takerCallbackData"
-          }
-        ]
+        "internalType": "contract IEtherTokenV06",
+        "name": "weth",
+        "type": "address"
       }
     ],
-    "outputs": []
+    "stateMutability": "nonpayable",
+    "type": "constructor"
   },
   {
-    "type": "function",
-    "name": "batchBuyERC1155s",
-    "constant": false,
-    "stateMutability": "payable",
-    "payable": true,
+    "anonymous": false,
     "inputs": [
       {
-        "type": "tuple[]",
-        "name": "sellOrders"
-      },
-      {
-        "type": "tuple[]",
-        "name": "signatures"
-      },
-      {
-        "type": "uint128[]",
-        "name": "erc1155FillAmounts"
-      },
-      {
-        "type": "bytes[]",
-        "name": "callbackData"
-      },
-      {
-        "type": "bool",
-        "name": "revertIfIncomplete"
-      }
-    ],
-    "outputs": [
-      {
-        "type": "bool[]",
-        "name": "successes"
-      }
-    ]
-  },
-  {
-    "type": "function",
-    "name": "batchCancelERC1155Orders",
-    "constant": false,
-    "payable": false,
-    "inputs": [
-      {
-        "type": "uint256[]",
-        "name": "orderNonces"
-      }
-    ],
-    "outputs": []
-  },
-  {
-    "type": "function",
-    "name": "buyERC1155",
-    "constant": false,
-    "stateMutability": "payable",
-    "payable": true,
-    "inputs": [
-      {
-        "type": "tuple",
-        "name": "sellOrder",
-        "components": [
-          {
-            "type": "uint8",
-            "name": "direction"
-          },
-          {
-            "type": "address",
-            "name": "maker"
-          },
-          {
-            "type": "address",
-            "name": "taker"
-          },
-          {
-            "type": "uint256",
-            "name": "expiry"
-          },
-          {
-            "type": "uint256",
-            "name": "nonce"
-          },
-          {
-            "type": "address",
-            "name": "erc20Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc20TokenAmount"
-          },
-          {
-            "type": "tuple[]",
-            "name": "fees"
-          },
-          {
-            "type": "address",
-            "name": "erc1155Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc1155TokenId"
-          },
-          {
-            "type": "tuple[]",
-            "name": "erc1155TokenProperties"
-          },
-          {
-            "type": "uint128",
-            "name": "erc1155TokenAmount"
-          }
-        ]
-      },
-      {
-        "type": "tuple",
-        "name": "signature",
-        "components": [
-          {
-            "type": "uint8",
-            "name": "signatureType"
-          },
-          {
-            "type": "uint8",
-            "name": "v"
-          },
-          {
-            "type": "bytes32",
-            "name": "r"
-          },
-          {
-            "type": "bytes32",
-            "name": "s"
-          }
-        ]
-      },
-      {
-        "type": "uint128",
-        "name": "erc1155BuyAmount"
-      },
-      {
-        "type": "bytes",
-        "name": "callbackData"
-      }
-    ],
-    "outputs": []
-  },
-  {
-    "type": "function",
-    "name": "cancelERC1155Order",
-    "constant": false,
-    "payable": false,
-    "inputs": [
-      {
-        "type": "uint256",
-        "name": "orderNonce"
-      }
-    ],
-    "outputs": []
-  },
-  {
-    "type": "function",
-    "name": "getERC1155OrderHash",
-    "constant": true,
-    "stateMutability": "view",
-    "payable": false,
-    "inputs": [
-      {
-        "type": "tuple",
-        "name": "order",
-        "components": [
-          {
-            "type": "uint8",
-            "name": "direction"
-          },
-          {
-            "type": "address",
-            "name": "maker"
-          },
-          {
-            "type": "address",
-            "name": "taker"
-          },
-          {
-            "type": "uint256",
-            "name": "expiry"
-          },
-          {
-            "type": "uint256",
-            "name": "nonce"
-          },
-          {
-            "type": "address",
-            "name": "erc20Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc20TokenAmount"
-          },
-          {
-            "type": "tuple[]",
-            "name": "fees"
-          },
-          {
-            "type": "address",
-            "name": "erc1155Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc1155TokenId"
-          },
-          {
-            "type": "tuple[]",
-            "name": "erc1155TokenProperties"
-          },
-          {
-            "type": "uint128",
-            "name": "erc1155TokenAmount"
-          }
-        ]
-      }
-    ],
-    "outputs": [
-      {
-        "type": "bytes32",
-        "name": "orderHash"
-      }
-    ]
-  },
-  {
-    "type": "function",
-    "name": "getERC1155OrderInfo",
-    "constant": true,
-    "stateMutability": "view",
-    "payable": false,
-    "inputs": [
-      {
-        "type": "tuple",
-        "name": "order",
-        "components": [
-          {
-            "type": "uint8",
-            "name": "direction"
-          },
-          {
-            "type": "address",
-            "name": "maker"
-          },
-          {
-            "type": "address",
-            "name": "taker"
-          },
-          {
-            "type": "uint256",
-            "name": "expiry"
-          },
-          {
-            "type": "uint256",
-            "name": "nonce"
-          },
-          {
-            "type": "address",
-            "name": "erc20Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc20TokenAmount"
-          },
-          {
-            "type": "tuple[]",
-            "name": "fees"
-          },
-          {
-            "type": "address",
-            "name": "erc1155Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc1155TokenId"
-          },
-          {
-            "type": "tuple[]",
-            "name": "erc1155TokenProperties"
-          },
-          {
-            "type": "uint128",
-            "name": "erc1155TokenAmount"
-          }
-        ]
-      }
-    ],
-    "outputs": [
-      {
-        "type": "tuple",
-        "name": "orderInfo",
-        "components": [
-          {
-            "type": "bytes32",
-            "name": "orderHash"
-          },
-          {
-            "type": "uint8",
-            "name": "status"
-          },
-          {
-            "type": "uint128",
-            "name": "orderAmount"
-          },
-          {
-            "type": "uint128",
-            "name": "remainingAmount"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "function",
-    "name": "migrate",
-    "constant": false,
-    "payable": false,
-    "inputs": [],
-    "outputs": [
-      {
-        "type": "bytes4",
-        "name": "success"
-      }
-    ]
-  },
-  {
-    "type": "function",
-    "name": "onERC1155Received",
-    "constant": false,
-    "payable": false,
-    "inputs": [
-      {
-        "type": "address",
-        "name": "operator"
-      },
-      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "maker",
         "type": "address"
       },
       {
-        "type": "uint256",
-        "name": "tokenId"
-      },
-      {
-        "type": "uint256",
-        "name": "value"
-      },
-      {
-        "type": "bytes",
-        "name": "data"
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "nonce",
+        "type": "uint256"
       }
     ],
+    "name": "ERC1155OrderCancelled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "enum LibNFTOrder.TradeDirection",
+        "name": "direction",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "maker",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "taker",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "nonce",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "contract IERC20TokenV06",
+        "name": "erc20Token",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "erc20FillAmount",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "contract IERC1155Token",
+        "name": "erc1155Token",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "erc1155TokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint128",
+        "name": "erc1155FillAmount",
+        "type": "uint128"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "matcher",
+        "type": "address"
+      }
+    ],
+    "name": "ERC1155OrderFilled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "enum LibNFTOrder.TradeDirection",
+        "name": "direction",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "maker",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "taker",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "expiry",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "nonce",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "contract IERC20TokenV06",
+        "name": "erc20Token",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "erc20TokenAmount",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          { "internalType": "address", "name": "recipient", "type": "address" },
+          { "internalType": "uint256", "name": "amount", "type": "uint256" },
+          { "internalType": "bytes", "name": "feeData", "type": "bytes" }
+        ],
+        "indexed": false,
+        "internalType": "struct LibNFTOrder.Fee[]",
+        "name": "fees",
+        "type": "tuple[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "contract IERC1155Token",
+        "name": "erc1155Token",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "erc1155TokenId",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "contract IPropertyValidator",
+            "name": "propertyValidator",
+            "type": "address"
+          },
+          { "internalType": "bytes", "name": "propertyData", "type": "bytes" }
+        ],
+        "indexed": false,
+        "internalType": "struct LibNFTOrder.Property[]",
+        "name": "erc1155TokenProperties",
+        "type": "tuple[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint128",
+        "name": "erc1155TokenAmount",
+        "type": "uint128"
+      }
+    ],
+    "name": "ERC1155OrderPreSigned",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "EIP712_DOMAIN_SEPARATOR",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "FEATURE_NAME",
+    "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "FEATURE_VERSION",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum LibNFTOrder.TradeDirection",
+            "name": "direction",
+            "type": "uint8"
+          },
+          { "internalType": "address", "name": "maker", "type": "address" },
+          { "internalType": "address", "name": "taker", "type": "address" },
+          { "internalType": "uint256", "name": "expiry", "type": "uint256" },
+          { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+          {
+            "internalType": "contract IERC20TokenV06",
+            "name": "erc20Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc20TokenAmount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "recipient",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              { "internalType": "bytes", "name": "feeData", "type": "bytes" }
+            ],
+            "internalType": "struct LibNFTOrder.Fee[]",
+            "name": "fees",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "contract IERC1155Token",
+            "name": "erc1155Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc1155TokenId",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "contract IPropertyValidator",
+                "name": "propertyValidator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "propertyData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Property[]",
+            "name": "erc1155TokenProperties",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint128",
+            "name": "erc1155TokenAmount",
+            "type": "uint128"
+          }
+        ],
+        "internalType": "struct LibNFTOrder.ERC1155Order",
+        "name": "sellOrder",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "enum LibSignature.SignatureType",
+            "name": "signatureType",
+            "type": "uint8"
+          },
+          { "internalType": "uint8", "name": "v", "type": "uint8" },
+          { "internalType": "bytes32", "name": "r", "type": "bytes32" },
+          { "internalType": "bytes32", "name": "s", "type": "bytes32" }
+        ],
+        "internalType": "struct LibSignature.Signature",
+        "name": "signature",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          { "internalType": "uint128", "name": "buyAmount", "type": "uint128" },
+          {
+            "internalType": "uint256",
+            "name": "ethAvailable",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "takerCallbackData",
+            "type": "bytes"
+          }
+        ],
+        "internalType": "struct NFTOrders.BuyParams",
+        "name": "params",
+        "type": "tuple"
+      }
+    ],
+    "name": "_buyERC1155",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum LibNFTOrder.TradeDirection",
+            "name": "direction",
+            "type": "uint8"
+          },
+          { "internalType": "address", "name": "maker", "type": "address" },
+          { "internalType": "address", "name": "taker", "type": "address" },
+          { "internalType": "uint256", "name": "expiry", "type": "uint256" },
+          { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+          {
+            "internalType": "contract IERC20TokenV06",
+            "name": "erc20Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc20TokenAmount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "recipient",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              { "internalType": "bytes", "name": "feeData", "type": "bytes" }
+            ],
+            "internalType": "struct LibNFTOrder.Fee[]",
+            "name": "fees",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "contract IERC1155Token",
+            "name": "erc1155Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc1155TokenId",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "contract IPropertyValidator",
+                "name": "propertyValidator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "propertyData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Property[]",
+            "name": "erc1155TokenProperties",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint128",
+            "name": "erc1155TokenAmount",
+            "type": "uint128"
+          }
+        ],
+        "internalType": "struct LibNFTOrder.ERC1155Order[]",
+        "name": "sellOrders",
+        "type": "tuple[]"
+      },
+      {
+        "components": [
+          {
+            "internalType": "enum LibSignature.SignatureType",
+            "name": "signatureType",
+            "type": "uint8"
+          },
+          { "internalType": "uint8", "name": "v", "type": "uint8" },
+          { "internalType": "bytes32", "name": "r", "type": "bytes32" },
+          { "internalType": "bytes32", "name": "s", "type": "bytes32" }
+        ],
+        "internalType": "struct LibSignature.Signature[]",
+        "name": "signatures",
+        "type": "tuple[]"
+      },
+      {
+        "internalType": "uint128[]",
+        "name": "erc1155FillAmounts",
+        "type": "uint128[]"
+      },
+      { "internalType": "bytes[]", "name": "callbackData", "type": "bytes[]" },
+      { "internalType": "bool", "name": "revertIfIncomplete", "type": "bool" }
+    ],
+    "name": "batchBuyERC1155s",
+    "outputs": [
+      { "internalType": "bool[]", "name": "successes", "type": "bool[]" }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "orderNonces",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "batchCancelERC1155Orders",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum LibNFTOrder.TradeDirection",
+            "name": "direction",
+            "type": "uint8"
+          },
+          { "internalType": "address", "name": "maker", "type": "address" },
+          { "internalType": "address", "name": "taker", "type": "address" },
+          { "internalType": "uint256", "name": "expiry", "type": "uint256" },
+          { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+          {
+            "internalType": "contract IERC20TokenV06",
+            "name": "erc20Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc20TokenAmount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "recipient",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              { "internalType": "bytes", "name": "feeData", "type": "bytes" }
+            ],
+            "internalType": "struct LibNFTOrder.Fee[]",
+            "name": "fees",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "contract IERC1155Token",
+            "name": "erc1155Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc1155TokenId",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "contract IPropertyValidator",
+                "name": "propertyValidator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "propertyData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Property[]",
+            "name": "erc1155TokenProperties",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint128",
+            "name": "erc1155TokenAmount",
+            "type": "uint128"
+          }
+        ],
+        "internalType": "struct LibNFTOrder.ERC1155Order",
+        "name": "sellOrder",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "enum LibSignature.SignatureType",
+            "name": "signatureType",
+            "type": "uint8"
+          },
+          { "internalType": "uint8", "name": "v", "type": "uint8" },
+          { "internalType": "bytes32", "name": "r", "type": "bytes32" },
+          { "internalType": "bytes32", "name": "s", "type": "bytes32" }
+        ],
+        "internalType": "struct LibSignature.Signature",
+        "name": "signature",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint128",
+        "name": "erc1155BuyAmount",
+        "type": "uint128"
+      },
+      { "internalType": "bytes", "name": "callbackData", "type": "bytes" }
+    ],
+    "name": "buyERC1155",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "orderNonce", "type": "uint256" }
+    ],
+    "name": "cancelERC1155Order",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum LibNFTOrder.TradeDirection",
+            "name": "direction",
+            "type": "uint8"
+          },
+          { "internalType": "address", "name": "maker", "type": "address" },
+          { "internalType": "address", "name": "taker", "type": "address" },
+          { "internalType": "uint256", "name": "expiry", "type": "uint256" },
+          { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+          {
+            "internalType": "contract IERC20TokenV06",
+            "name": "erc20Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc20TokenAmount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "recipient",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              { "internalType": "bytes", "name": "feeData", "type": "bytes" }
+            ],
+            "internalType": "struct LibNFTOrder.Fee[]",
+            "name": "fees",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "contract IERC1155Token",
+            "name": "erc1155Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc1155TokenId",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "contract IPropertyValidator",
+                "name": "propertyValidator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "propertyData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Property[]",
+            "name": "erc1155TokenProperties",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint128",
+            "name": "erc1155TokenAmount",
+            "type": "uint128"
+          }
+        ],
+        "internalType": "struct LibNFTOrder.ERC1155Order",
+        "name": "order",
+        "type": "tuple"
+      }
+    ],
+    "name": "getERC1155OrderHash",
+    "outputs": [
+      { "internalType": "bytes32", "name": "orderHash", "type": "bytes32" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum LibNFTOrder.TradeDirection",
+            "name": "direction",
+            "type": "uint8"
+          },
+          { "internalType": "address", "name": "maker", "type": "address" },
+          { "internalType": "address", "name": "taker", "type": "address" },
+          { "internalType": "uint256", "name": "expiry", "type": "uint256" },
+          { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+          {
+            "internalType": "contract IERC20TokenV06",
+            "name": "erc20Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc20TokenAmount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "recipient",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              { "internalType": "bytes", "name": "feeData", "type": "bytes" }
+            ],
+            "internalType": "struct LibNFTOrder.Fee[]",
+            "name": "fees",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "contract IERC1155Token",
+            "name": "erc1155Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc1155TokenId",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "contract IPropertyValidator",
+                "name": "propertyValidator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "propertyData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Property[]",
+            "name": "erc1155TokenProperties",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint128",
+            "name": "erc1155TokenAmount",
+            "type": "uint128"
+          }
+        ],
+        "internalType": "struct LibNFTOrder.ERC1155Order",
+        "name": "order",
+        "type": "tuple"
+      }
+    ],
+    "name": "getERC1155OrderInfo",
     "outputs": [
       {
-        "type": "bytes4",
-        "name": "success"
+        "components": [
+          { "internalType": "bytes32", "name": "orderHash", "type": "bytes32" },
+          {
+            "internalType": "enum LibNFTOrder.OrderStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint128",
+            "name": "orderAmount",
+            "type": "uint128"
+          },
+          {
+            "internalType": "uint128",
+            "name": "remainingAmount",
+            "type": "uint128"
+          }
+        ],
+        "internalType": "struct LibNFTOrder.OrderInfo",
+        "name": "orderInfo",
+        "type": "tuple"
       }
-    ]
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    "type": "function",
+    "inputs": [],
+    "name": "migrate",
+    "outputs": [
+      { "internalType": "bytes4", "name": "success", "type": "bytes4" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "operator", "type": "address" },
+      { "internalType": "address", "name": "", "type": "address" },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
+      { "internalType": "uint256", "name": "value", "type": "uint256" },
+      { "internalType": "bytes", "name": "data", "type": "bytes" }
+    ],
+    "name": "onERC1155Received",
+    "outputs": [
+      { "internalType": "bytes4", "name": "success", "type": "bytes4" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum LibNFTOrder.TradeDirection",
+            "name": "direction",
+            "type": "uint8"
+          },
+          { "internalType": "address", "name": "maker", "type": "address" },
+          { "internalType": "address", "name": "taker", "type": "address" },
+          { "internalType": "uint256", "name": "expiry", "type": "uint256" },
+          { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+          {
+            "internalType": "contract IERC20TokenV06",
+            "name": "erc20Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc20TokenAmount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "recipient",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              { "internalType": "bytes", "name": "feeData", "type": "bytes" }
+            ],
+            "internalType": "struct LibNFTOrder.Fee[]",
+            "name": "fees",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "contract IERC1155Token",
+            "name": "erc1155Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc1155TokenId",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "contract IPropertyValidator",
+                "name": "propertyValidator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "propertyData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Property[]",
+            "name": "erc1155TokenProperties",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint128",
+            "name": "erc1155TokenAmount",
+            "type": "uint128"
+          }
+        ],
+        "internalType": "struct LibNFTOrder.ERC1155Order",
+        "name": "order",
+        "type": "tuple"
+      }
+    ],
     "name": "preSignERC1155Order",
-    "constant": false,
-    "payable": false,
-    "inputs": [
-      {
-        "type": "tuple",
-        "name": "order",
-        "components": [
-          {
-            "type": "uint8",
-            "name": "direction"
-          },
-          {
-            "type": "address",
-            "name": "maker"
-          },
-          {
-            "type": "address",
-            "name": "taker"
-          },
-          {
-            "type": "uint256",
-            "name": "expiry"
-          },
-          {
-            "type": "uint256",
-            "name": "nonce"
-          },
-          {
-            "type": "address",
-            "name": "erc20Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc20TokenAmount"
-          },
-          {
-            "type": "tuple[]",
-            "name": "fees"
-          },
-          {
-            "type": "address",
-            "name": "erc1155Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc1155TokenId"
-          },
-          {
-            "type": "tuple[]",
-            "name": "erc1155TokenProperties"
-          },
-          {
-            "type": "uint128",
-            "name": "erc1155TokenAmount"
-          }
-        ]
-      }
-    ],
-    "outputs": []
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    "type": "function",
-    "name": "sellERC1155",
-    "constant": false,
-    "payable": false,
     "inputs": [
       {
-        "type": "tuple",
+        "components": [
+          {
+            "internalType": "enum LibNFTOrder.TradeDirection",
+            "name": "direction",
+            "type": "uint8"
+          },
+          { "internalType": "address", "name": "maker", "type": "address" },
+          { "internalType": "address", "name": "taker", "type": "address" },
+          { "internalType": "uint256", "name": "expiry", "type": "uint256" },
+          { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+          {
+            "internalType": "contract IERC20TokenV06",
+            "name": "erc20Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc20TokenAmount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "recipient",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              { "internalType": "bytes", "name": "feeData", "type": "bytes" }
+            ],
+            "internalType": "struct LibNFTOrder.Fee[]",
+            "name": "fees",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "contract IERC1155Token",
+            "name": "erc1155Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc1155TokenId",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "contract IPropertyValidator",
+                "name": "propertyValidator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "propertyData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Property[]",
+            "name": "erc1155TokenProperties",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint128",
+            "name": "erc1155TokenAmount",
+            "type": "uint128"
+          }
+        ],
+        "internalType": "struct LibNFTOrder.ERC1155Order",
         "name": "buyOrder",
-        "components": [
-          {
-            "type": "uint8",
-            "name": "direction"
-          },
-          {
-            "type": "address",
-            "name": "maker"
-          },
-          {
-            "type": "address",
-            "name": "taker"
-          },
-          {
-            "type": "uint256",
-            "name": "expiry"
-          },
-          {
-            "type": "uint256",
-            "name": "nonce"
-          },
-          {
-            "type": "address",
-            "name": "erc20Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc20TokenAmount"
-          },
-          {
-            "type": "tuple[]",
-            "name": "fees"
-          },
-          {
-            "type": "address",
-            "name": "erc1155Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc1155TokenId"
-          },
-          {
-            "type": "tuple[]",
-            "name": "erc1155TokenProperties"
-          },
-          {
-            "type": "uint128",
-            "name": "erc1155TokenAmount"
-          }
-        ]
+        "type": "tuple"
       },
       {
-        "type": "tuple",
+        "components": [
+          {
+            "internalType": "enum LibSignature.SignatureType",
+            "name": "signatureType",
+            "type": "uint8"
+          },
+          { "internalType": "uint8", "name": "v", "type": "uint8" },
+          { "internalType": "bytes32", "name": "r", "type": "bytes32" },
+          { "internalType": "bytes32", "name": "s", "type": "bytes32" }
+        ],
+        "internalType": "struct LibSignature.Signature",
         "name": "signature",
-        "components": [
-          {
-            "type": "uint8",
-            "name": "signatureType"
-          },
-          {
-            "type": "uint8",
-            "name": "v"
-          },
-          {
-            "type": "bytes32",
-            "name": "r"
-          },
-          {
-            "type": "bytes32",
-            "name": "s"
-          }
-        ]
+        "type": "tuple"
       },
       {
-        "type": "uint256",
-        "name": "erc1155TokenId"
+        "internalType": "uint256",
+        "name": "erc1155TokenId",
+        "type": "uint256"
       },
       {
-        "type": "uint128",
-        "name": "erc1155SellAmount"
+        "internalType": "uint128",
+        "name": "erc1155SellAmount",
+        "type": "uint128"
       },
-      {
-        "type": "bool",
-        "name": "unwrapNativeToken"
-      },
-      {
-        "type": "bytes",
-        "name": "callbackData"
-      }
+      { "internalType": "bool", "name": "unwrapNativeToken", "type": "bool" },
+      { "internalType": "bytes", "name": "callbackData", "type": "bytes" }
     ],
-    "outputs": []
+    "name": "sellERC1155",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    "type": "function",
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "enum LibNFTOrder.TradeDirection",
+            "name": "direction",
+            "type": "uint8"
+          },
+          { "internalType": "address", "name": "maker", "type": "address" },
+          { "internalType": "address", "name": "taker", "type": "address" },
+          { "internalType": "uint256", "name": "expiry", "type": "uint256" },
+          { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+          {
+            "internalType": "contract IERC20TokenV06",
+            "name": "erc20Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc20TokenAmount",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "recipient",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              { "internalType": "bytes", "name": "feeData", "type": "bytes" }
+            ],
+            "internalType": "struct LibNFTOrder.Fee[]",
+            "name": "fees",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "contract IERC1155Token",
+            "name": "erc1155Token",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "erc1155TokenId",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "contract IPropertyValidator",
+                "name": "propertyValidator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "propertyData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Property[]",
+            "name": "erc1155TokenProperties",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "uint128",
+            "name": "erc1155TokenAmount",
+            "type": "uint128"
+          }
+        ],
+        "internalType": "struct LibNFTOrder.ERC1155Order",
+        "name": "order",
+        "type": "tuple"
+      },
+      { "internalType": "uint256", "name": "erc1155TokenId", "type": "uint256" }
+    ],
     "name": "validateERC1155OrderProperties",
-    "constant": true,
+    "outputs": [],
     "stateMutability": "view",
-    "payable": false,
-    "inputs": [
-      {
-        "type": "tuple",
-        "name": "order",
-        "components": [
-          {
-            "type": "uint8",
-            "name": "direction"
-          },
-          {
-            "type": "address",
-            "name": "maker"
-          },
-          {
-            "type": "address",
-            "name": "taker"
-          },
-          {
-            "type": "uint256",
-            "name": "expiry"
-          },
-          {
-            "type": "uint256",
-            "name": "nonce"
-          },
-          {
-            "type": "address",
-            "name": "erc20Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc20TokenAmount"
-          },
-          {
-            "type": "tuple[]",
-            "name": "fees"
-          },
-          {
-            "type": "address",
-            "name": "erc1155Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc1155TokenId"
-          },
-          {
-            "type": "tuple[]",
-            "name": "erc1155TokenProperties"
-          },
-          {
-            "type": "uint128",
-            "name": "erc1155TokenAmount"
-          }
-        ]
-      },
-      {
-        "type": "uint256",
-        "name": "erc1155TokenId"
-      }
-    ],
-    "outputs": []
+    "type": "function"
   },
   {
-    "type": "function",
-    "name": "validateERC1155OrderSignature",
-    "constant": true,
-    "stateMutability": "view",
-    "payable": false,
     "inputs": [
       {
-        "type": "tuple",
-        "name": "order",
         "components": [
           {
-            "type": "uint8",
-            "name": "direction"
+            "internalType": "enum LibNFTOrder.TradeDirection",
+            "name": "direction",
+            "type": "uint8"
+          },
+          { "internalType": "address", "name": "maker", "type": "address" },
+          { "internalType": "address", "name": "taker", "type": "address" },
+          { "internalType": "uint256", "name": "expiry", "type": "uint256" },
+          { "internalType": "uint256", "name": "nonce", "type": "uint256" },
+          {
+            "internalType": "contract IERC20TokenV06",
+            "name": "erc20Token",
+            "type": "address"
           },
           {
-            "type": "address",
-            "name": "maker"
+            "internalType": "uint256",
+            "name": "erc20TokenAmount",
+            "type": "uint256"
           },
           {
-            "type": "address",
-            "name": "taker"
+            "components": [
+              {
+                "internalType": "address",
+                "name": "recipient",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+              },
+              { "internalType": "bytes", "name": "feeData", "type": "bytes" }
+            ],
+            "internalType": "struct LibNFTOrder.Fee[]",
+            "name": "fees",
+            "type": "tuple[]"
           },
           {
-            "type": "uint256",
-            "name": "expiry"
+            "internalType": "contract IERC1155Token",
+            "name": "erc1155Token",
+            "type": "address"
           },
           {
-            "type": "uint256",
-            "name": "nonce"
+            "internalType": "uint256",
+            "name": "erc1155TokenId",
+            "type": "uint256"
           },
           {
-            "type": "address",
-            "name": "erc20Token"
+            "components": [
+              {
+                "internalType": "contract IPropertyValidator",
+                "name": "propertyValidator",
+                "type": "address"
+              },
+              {
+                "internalType": "bytes",
+                "name": "propertyData",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibNFTOrder.Property[]",
+            "name": "erc1155TokenProperties",
+            "type": "tuple[]"
           },
           {
-            "type": "uint256",
-            "name": "erc20TokenAmount"
-          },
-          {
-            "type": "tuple[]",
-            "name": "fees"
-          },
-          {
-            "type": "address",
-            "name": "erc1155Token"
-          },
-          {
-            "type": "uint256",
-            "name": "erc1155TokenId"
-          },
-          {
-            "type": "tuple[]",
-            "name": "erc1155TokenProperties"
-          },
-          {
-            "type": "uint128",
-            "name": "erc1155TokenAmount"
+            "internalType": "uint128",
+            "name": "erc1155TokenAmount",
+            "type": "uint128"
           }
-        ]
+        ],
+        "internalType": "struct LibNFTOrder.ERC1155Order",
+        "name": "order",
+        "type": "tuple"
       },
       {
-        "type": "tuple",
-        "name": "signature",
         "components": [
           {
-            "type": "uint8",
-            "name": "signatureType"
+            "internalType": "enum LibSignature.SignatureType",
+            "name": "signatureType",
+            "type": "uint8"
           },
-          {
-            "type": "uint8",
-            "name": "v"
-          },
-          {
-            "type": "bytes32",
-            "name": "r"
-          },
-          {
-            "type": "bytes32",
-            "name": "s"
-          }
-        ]
+          { "internalType": "uint8", "name": "v", "type": "uint8" },
+          { "internalType": "bytes32", "name": "r", "type": "bytes32" },
+          { "internalType": "bytes32", "name": "s", "type": "bytes32" }
+        ],
+        "internalType": "struct LibSignature.Signature",
+        "name": "signature",
+        "type": "tuple"
       }
     ],
-    "outputs": []
+    "name": "validateERC1155OrderSignature",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
   }
 ]
