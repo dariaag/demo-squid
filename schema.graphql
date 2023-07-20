@@ -1,0 +1,9 @@
+type Transaction @entity {
+  id: ID!
+  timestamp: DateTime!
+  hash: String!
+  from: String!
+  input: String!
+  caller: String!
+ 
+}
