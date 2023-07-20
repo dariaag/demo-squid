@@ -3,8 +3,9 @@
 
 # Tracking transactions
 
-This sample squid tracks transactions to and from `vitalik.eth` address on Ethereum Mainnet.  
-One can use this example as a template for scaffolding a new squid project with [`sqd init`](https://docs.subsquid.io/squid-cli/):
+This sample squid tracks 'Sell to Uniswap 'transactions from ZeroX address on Ethereum Mainnet. 
+
+One can use an example as a template for scaffolding a new squid project with [`sqd init`](https://docs.subsquid.io/squid-cli/):
 
 ```bash
 sqd init my-new-squid --template https://github.com/subsquid-labs/transactions-example
